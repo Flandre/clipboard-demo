@@ -37,6 +37,5 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          ACCESS_TOKEN: ${{ secrets.ACTION_BUILD }}
-          BRANCH: page
-          FOLDER: build
+          ssh-key: ${{ secrets.ACTION_BUILD }}
+          folder: dist
