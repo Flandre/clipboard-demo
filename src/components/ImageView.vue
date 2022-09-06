@@ -13,7 +13,9 @@ export default {
 
 <style lang="scss" scoped>
 .image-view {
-	margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	img {
 		display: block;
 		max-width: 100%;

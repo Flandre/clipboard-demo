@@ -14,7 +14,6 @@ export default {
 	display: block;
 	width: 100%;
 	font-size: 16px;
-	margin-bottom: 10px;
 	word-break: break-all;
 	text-align: left;
 }

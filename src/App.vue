@@ -33,4 +33,9 @@ html, body {
 	flex-direction: column;
 	align-items: center;
 }
+@media print {
+	#app {
+		padding: 0;
+	}
+}
 </style>
