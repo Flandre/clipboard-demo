@@ -1,6 +1,6 @@
 <template>
 	<div class="image-view">
-		<img v-if="data" :src="data" alt="image"/>
+		<img v-if="data" :src="data" alt="image" :class="$store.state.imageType"/>
 	</div>
 </template>
 
@@ -18,8 +18,17 @@ export default {
 	align-items: center;
 	img {
 		display: block;
-		max-width: 100%;
-		height: auto;
+		&.normal {
+			max-width: 100%;
+			height: auto;
+		}
+		&.source {
+
+		}
+		&.fill {
+			width: 100%;
+			height: auto;
+		}
 	}
 }
 </style>

@@ -6,7 +6,15 @@
 				<el-button type="primary" round @click="print()">打印</el-button>
 			</div>
 			<div class="select-group">
-				<el-select style="width: 100px;" v-model="width" placeholder="请选择宽度">
+				<el-select style="width: 150px;" v-model="$store.state.imageType" placeholder="选择图片模式">
+					<el-option
+						v-for="item in imageTypeList"
+						:key="item.value"
+						:label="item.label"
+						:value="item.value">
+					</el-option>
+				</el-select>
+				<el-select style="width: 100px; margin-left: 10px;" v-model="width" placeholder="请选择宽度">
 					<el-option
 						v-for="item in widthList"
 						:key="item.value"
@@ -71,6 +79,20 @@ export default {
 					label: '1000px',
 					value: 1000
 				},
+			],
+			imageTypeList: [
+				{
+					label: '原始',
+					value: 'source'
+				},
+				{
+					label: '不超过最大宽度',
+					value: 'normal'
+				},
+				{
+					label: '拉伸',
+					value: 'fill'
+				}
 			]
 		}
 	},
