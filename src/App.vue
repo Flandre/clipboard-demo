@@ -1,28 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+		<Clipboard/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Clipboard from "@/views/Clipboard";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+		Clipboard
   }
 }
 </script>
 
 <style lang="scss">
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+html, body {
+	min-height: 100vh;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+	min-height: 100vh;
+	background-color: #333;
+	box-sizing: border-box;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 </style>
