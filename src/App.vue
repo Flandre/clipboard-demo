@@ -26,7 +26,7 @@ html, body {
 }
 #app {
 	min-height: 100vh;
-	background-color: #333;
+	//background-color: #333;
 	box-sizing: border-box;
 	padding: 20px;
 	display: flex;
