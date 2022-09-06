@@ -2,6 +2,7 @@
 	<div class="clipboard-main">
 		<div class="print-panel">
 			<el-button type="primary" round @click="pasteClipboard">粘贴</el-button>
+			<el-button type="primary" round @click="print()">打印</el-button>
 		</div>
 		<div class="paste-board">
 			<component
@@ -28,6 +29,9 @@ export default {
 		ImageView
 	},
 	methods: {
+		print() {
+			window.print()
+		},
 		async pasteClipboard() {
 			let self = this
 			const permission = await navigator.permissions.query({ name: 'clipboard-read' });
@@ -69,7 +73,7 @@ export default {
 
 <style lang="scss" scoped>
 .clipboard-main {
-	width: 600px;
+	width: 800px;
 	margin: 0 auto;
 	.print-panel {
 		margin-bottom: 20px;
