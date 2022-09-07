@@ -58,6 +58,11 @@ export default {
 			]
 		}
 	},
+	mounted() {
+		document.addEventListener('paste', e => {
+			this.pasteClipboard()
+		})
+	},
 	computed: {
 		widthList() {
 			let start = 600, end = 1000, step = 50, out = []
