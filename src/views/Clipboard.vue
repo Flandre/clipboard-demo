@@ -162,8 +162,10 @@ export default {
 	}
 }
 @media print {
-	.print-panel {
-		display: none;
+	.clipboard-main {
+		.print-panel {
+			display: none !important;
+		}
 	}
 }
 </style>
