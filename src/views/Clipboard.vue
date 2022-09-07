@@ -28,7 +28,10 @@
 			<Adapter
 				v-for="(item, index) in itemList"
 				:item="item"
+				:index="index"
 				v-on:delete="deleteItem(index)"
+				v-on:up="upItem(index)"
+				v-on:down="downItem(index)"
 			/>
 		</div>
 	</div>
@@ -55,7 +58,7 @@ export default {
 					label: '拉伸',
 					value: 'fill'
 				}
-			]
+			],
 		}
 	},
 	mounted() {
@@ -85,6 +88,27 @@ export default {
 		},
 		deleteItem(index) {
 			this.itemList.splice(index, 1)
+			setTimeout(() => {
+				this.$store.state.selectAdapter = -1
+			}, 1)
+		},
+		upItem(index) {
+			if(index != 0){
+				let t = this.itemList.splice(index, 1)[0]
+				this.itemList.splice(index - 1, 0, t)
+				setTimeout(() => {
+					this.$store.state.selectAdapter = index - 1
+				}, 1)
+			}
+		},
+		downItem(index) {
+			if(index != this.itemList.length - 1){
+				let t = this.itemList.splice(index, 1)[0]
+				this.itemList.splice(index + 1, 0, t)
+				setTimeout(() => {
+					this.$store.state.selectAdapter = index + 1
+				}, 1)
+			}
 		},
 		async pasteClipboard() {
 			let self = this

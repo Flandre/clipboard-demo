@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" @click="$store.state.selectAdapter = -1">
 		<Clipboard/>
   </div>
 </template>

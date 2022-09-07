@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-		imageType: 'normal'
+		imageType: 'normal',
+		selectAdapter: -1
   },
   mutations: {
   },
