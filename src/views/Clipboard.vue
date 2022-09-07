@@ -59,9 +59,10 @@ export default {
 		}
 	},
 	mounted() {
-		document.addEventListener('paste', e => {
-			this.pasteClipboard()
-		})
+		document.addEventListener('paste', this.pasteClipboard)
+	},
+	beforeDestroy() {
+		document.removeEventListener('paste', this.pasteClipboard)
 	},
 	computed: {
 		widthList() {
