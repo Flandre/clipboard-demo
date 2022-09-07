@@ -42,44 +42,6 @@ export default {
 		return {
 			itemList: [],
 			width: 800,
-			widthList: [
-				{
-					label: '600px',
-					value: 600
-				},
-				{
-					label: '650px',
-					value: 650
-				},
-				{
-					label: '700px',
-					value: 700
-				},
-				{
-					label: '750px',
-					value: 750
-				},
-				{
-					label: '800px',
-					value: 800
-				},
-				{
-					label: '850px',
-					value: 850
-				},
-				{
-					label: '900px',
-					value: 900
-				},
-				{
-					label: '950px',
-					value: 950
-				},
-				{
-					label: '1000px',
-					value: 1000
-				},
-			],
 			imageTypeList: [
 				{
 					label: '原始',
@@ -96,6 +58,18 @@ export default {
 			]
 		}
 	},
+	computed: {
+		widthList() {
+			let start = 600, end = 1000, step = 50, out = []
+			for(let value = start; value <= end; value += step){
+				out.push({
+					value,
+					label: `${value}px`
+				})
+			}
+			return out
+		}
+	},
 	components: {
 		Adapter
 	},
@@ -110,6 +84,7 @@ export default {
 			let self = this
 			const permission = await navigator.permissions.query({ name: 'clipboard-read' });
 			if (permission.state === 'denied') {
+				self.$message.error('Not allowed to read clipboard.')
 				throw new Error('Not allowed to read clipboard.');
 			}
 			const clipboardContents = await navigator.clipboard.read();
@@ -127,7 +102,7 @@ export default {
 					const type = item.types.filter(x => x.startsWith('image/'))[0]
 					const blob = await item.getType(type)
 					if(!blob) {
-						alert('no blob')
+						self.$message.error('Null blob data.')
 						return
 					}
 					const data = URL.createObjectURL(blob)
@@ -138,7 +113,7 @@ export default {
 					return
 				}
 				console.log(item)
-				alert('error item type')
+				self.$message.error('Error clipboard item type.')
 			}
 		}
 	}
